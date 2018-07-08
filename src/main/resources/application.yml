@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+      - id: baidu
+        uri: http://baidu.com
+        predicates:
+        - Path=/v1/notice/{segment}
+      - id: sohu
+        uri: http://www.sohu.com
+        predicates:
+        - Path=/sohu
+        filters:
+        - StripPrefix=1
+
+management:
+  security:
+    enabled: false
